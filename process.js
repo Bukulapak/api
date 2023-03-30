@@ -12,8 +12,8 @@ export function postData(target_url,datajson,responseFunction){
     };
 
     fetch(target_url, requestOptions)
-    .then(response => response.text())
-    .then(result => responseFunction(JSON.parse(result)))
+    .then(response => response.json())
+    .then(result => responseFunction(result))
     .catch(error => console.log('error', error));
 }
 
