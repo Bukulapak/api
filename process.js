@@ -76,6 +76,18 @@ export function putData(target_url, datajson, responseFunction) {
     .catch(error => console.log('error', error));
 }
 
+export function deleteData(target_url, responseFunction) {
+  var requestOptions = {
+    method: 'DELETE',
+    redirect: 'follow'
+  };
+
+  fetch(target_url, requestOptions)
+    .then(response => response.json())
+    .then(result => responseFunction(result))
+    .catch(error => console.log('Error:', error));
+}
+
 export function get(target_url,responseFunction){
     var requestOptions = {
     method: 'GET',
@@ -83,7 +95,7 @@ export function get(target_url,responseFunction){
     };
 
     fetch(target_url, requestOptions)
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => responseFunction(JSON.parse(result)))
     .catch(error => console.log('error', error));
 }
